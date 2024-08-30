@@ -1,0 +1,18 @@
+{
+  "characteristics": "skipped",
+  "identification": {
+    "identified": false,
+    "test_result_same_pc": {
+      "status": "completed",
+      "triggers_prefetch_with_additional_region_accesses": false,
+      "triggers_prefetch_without_additional_region_accesses": false
+    }
+  },
+  "post_test": {
+    
+  },
+  "pre_test": {
+    "architecture": 1
+  },
+  "runtime_sec": 71
+}

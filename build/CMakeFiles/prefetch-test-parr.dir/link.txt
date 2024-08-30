@@ -1,0 +1,1 @@
+/usr/bin/cc -DRDTSC -g   CMakeFiles/prefetch-test-parr.dir/src/parr/parr_x86.S.o CMakeFiles/prefetch-test-parr.dir/src/parr/parr.c.o  -o prefetch-test-parr -static 

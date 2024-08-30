@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hygon/wangzichen/FetchBench-main/fetchbench/src/parr/parr.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+stdint.h
+-
+pthread.h
+-
+unistd.h
+-
+sys/mman.h
+-
+time.h
+-
+pthread.h
+-
+

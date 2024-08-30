@@ -1,0 +1,13 @@
+{
+  "characteristics": "skipped",
+  "identification": {
+    
+  },
+  "post_test": {
+    
+  },
+  "pre_test": {
+    "architecture": 1
+  },
+  "runtime_sec": 3961
+}

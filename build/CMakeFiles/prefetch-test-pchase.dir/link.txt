@@ -1,0 +1,1 @@
+/usr/bin/cc -DRDTSC -g   CMakeFiles/prefetch-test-pchase.dir/src/pchase/pchase_x86.S.o CMakeFiles/prefetch-test-pchase.dir/src/pchase/pchase.c.o  -o prefetch-test-pchase -static 

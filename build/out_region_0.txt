@@ -1,0 +1,220 @@
+Pinning process to CPU 0
+
+noise: 0 0 
+Using Flush+Reload threshold: 250, noise threshold: 0, use_nanosleep: 1
+Running test case: "sms"
+Running only identification tests.
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x2 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x3 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x3 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0xb into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x2b into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+Test: test_trigger_same_pc_same_memory
+Computed distance: 64
+Computed distance: -64
+Computed distance: 128
+Computed distance: -128
+Computed distance: 192
+Computed distance: -192
+miss location at  0:               0
+miss location at  1:               0
+miss location at  2:               0
+miss location at  3:               0
+miss location at  4:               0
+miss location at  5:               0
+miss location at  6:               0
+miss location at  7:               0
+miss location at  8:               0
+miss location at  9:               0
+miss location at 10:               0
+miss location at 11:               0
+miss location at 12:               0
+miss location at 13:               0
+miss location at 14:               0
+miss location at 15:               0
+miss location at 16:               0
+miss location at 17:               0
+miss location at 18:               0
+miss location at 19:               0
+miss location at 20:               0
+miss location at 21:               0
+miss location at 22:               0
+miss location at 23:               0
+miss location at 24:               0
+miss location at 25:               0
+miss location at 26:               0
+miss location at 27:               0
+potential prefetch location at 28:      0
+potential prefetch location at 29:      0
+potential prefetch location at 30:      0
+expecting hit at 31:                  998
+potential prefetch location at 32:      0
+potential prefetch location at 33:      0
+potential prefetch location at 34:      0
+miss location at 35:               0
+miss location at 36:               0
+miss location at 37:               0
+miss location at 38:               0
+miss location at 39:               0
+miss location at 40:               0
+miss location at 41:               0
+miss location at 42:               0
+miss location at 43:               0
+miss location at 44:               0
+miss location at 45:               0
+miss location at 46:               0
+miss location at 47:               0
+miss location at 48:               0
+miss location at 49:               0
+miss location at 50:               0
+miss location at 51:               0
+miss location at 52:               0
+miss location at 53:               0
+miss location at 54:               0
+miss location at 55:               0
+miss location at 56:               0
+miss location at 57:               0
+miss location at 58:               0
+miss location at 59:               0
+miss location at 60:               0
+miss location at 61:               0
+miss location at 62:               0
+miss location at 63:               0
+average hit:       998
+average miss:        0
+prefetch thresh:    15
+potential prefetch (3) location at 28:      0
+potential prefetch (3) location at 29:      0
+potential prefetch (3) location at 30:      0
+potential prefetch (3) location at 32:      0
+potential prefetch (3) location at 33:      0
+potential prefetch (3) location at 34:      0
+miss location at  0:               0
+miss location at  1:               0
+miss location at  2:               0
+miss location at  3:               0
+miss location at  4:               0
+miss location at  5:               0
+miss location at  6:               0
+miss location at  7:               0
+miss location at  8:               0
+miss location at  9:               0
+miss location at 10:               0
+miss location at 11:               0
+miss location at 12:               0
+miss location at 13:               0
+miss location at 14:               0
+miss location at 15:               0
+miss location at 16:               0
+miss location at 17:               0
+miss location at 18:               0
+miss location at 19:               0
+miss location at 20:               0
+miss location at 21:               0
+miss location at 22:               0
+miss location at 23:               0
+miss location at 24:               0
+miss location at 25:               0
+miss location at 26:               0
+miss location at 27:               0
+potential prefetch location at 28:      0
+potential prefetch location at 29:      0
+potential prefetch location at 30:      0
+expecting hit at 31:                  997
+potential prefetch location at 32:      0
+potential prefetch location at 33:      0
+potential prefetch location at 34:      0
+miss location at 35:               0
+miss location at 36:               0
+miss location at 37:               0
+miss location at 38:               0
+miss location at 39:               0
+miss location at 40:               0
+miss location at 41:               0
+miss location at 42:               0
+miss location at 43:               0
+miss location at 44:               0
+miss location at 45:               0
+miss location at 46:               0
+miss location at 47:               0
+miss location at 48:               0
+miss location at 49:               0
+miss location at 50:               0
+miss location at 51:               0
+miss location at 52:               0
+miss location at 53:               0
+miss location at 54:               0
+miss location at 55:               0
+miss location at 56:               0
+miss location at 57:               0
+miss location at 58:               0
+miss location at 59:               0
+miss location at 60:               0
+miss location at 61:               0
+miss location at 62:               0
+miss location at 63:               0
+average hit:       997
+average miss:        0
+prefetch thresh:    15
+potential prefetch (3) location at 28:      0
+potential prefetch (3) location at 29:      0
+potential prefetch (3) location at 30:      0
+potential prefetch (3) location at 32:      0
+potential prefetch (3) location at 33:      0
+potential prefetch (3) location at 34:      0
+Plotting data...
+Waiting for plot script to finish...
+Plot finished.
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x29 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x28 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x28 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x20 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+set_amd_prefetcher: Writing 0x0 into 0xc0000108.
+msr_file_path: /dev/cpu/0/msr
+msr_file_path: /dev/cpu/0/msr
+{
+  "characteristics": "skipped",
+  "identification": {
+    "identified": false,
+    "test_result_same_pc": {
+      "status": "completed",
+      "triggers_prefetch_with_additional_region_accesses": false,
+      "triggers_prefetch_without_additional_region_accesses": false
+    }
+  },
+  "post_test": {
+    
+  },
+  "pre_test": {
+    "architecture": 1
+  },
+  "runtime_sec": 71
+}
