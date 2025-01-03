@@ -92,7 +92,13 @@ bool StrideExperiment::cl_accessed(size_t cl_idx) const {
 }
 
 bool StrideExperiment::cl_accessed(size_t cl_idx, ssize_t delta, size_t gap1, size_t gap2) const {
-	for (size_t offset = cl_idx * CACHE_LINE_SIZE; offset < (cl_idx+1) * CACHE_LINE_SIZE; offset++) {
+
+//	for (size_t offset = cl_idx * CACHE_LINE_SIZE; offset < (cl_idx+1) * CACHE_LINE_SIZE; offset++) {
+//		if (offset_accessed(offset, delta, gap1, gap2)) {
+//			return true;
+//		}
+//	}
+	for (size_t offset = cl_idx; offset < (cl_idx+1); offset++) {
 		if (offset_accessed(offset, delta, gap1, gap2)) {
 			return true;
 		}
@@ -110,7 +116,12 @@ bool StrideExperiment::cl_potential_prefetch(size_t cl_idx) const {
 }
 
 bool StrideExperiment::cl_potential_prefetch(size_t cl_idx, ssize_t delta, size_t gap1, size_t gap2) const {
-	for (size_t offset = cl_idx * CACHE_LINE_SIZE; offset < (cl_idx+1) * CACHE_LINE_SIZE; offset++) {
+//	for (size_t offset = cl_idx * CACHE_LINE_SIZE; offset < (cl_idx+1) * CACHE_LINE_SIZE; offset++) {
+//		if (offset_potential_prefetch(offset, delta, gap1, gap2)) {
+//			return true;
+//		}
+//	}
+	for (size_t offset = cl_idx; offset < (cl_idx+1); offset++) {
 		if (offset_potential_prefetch(offset, delta, gap1, gap2)) {
 			return true;
 		}
@@ -205,7 +216,8 @@ vector<size_t> StrideExperiment::collect_cache_histogram(Mapping const& mapping,
 	assert(ptr_begin >= mapping.base_addr && ptr_begin < mapping.base_addr + mapping.size);
 	assert(ptr_last >= mapping.base_addr && ptr_last < mapping.base_addr + mapping.size);
 
-	vector<uint64_t> cache_histogram (mapping.size / CACHE_LINE_SIZE, 0);
+	//vector<uint64_t> cache_histogram (mapping.size / CACHE_LINE_SIZE, 0);
+	vector<uint64_t> cache_histogram (mapping.size, 0);
 	for (size_t repetition = 0; repetition < no_repetitions; repetition++) {
 		// flush mappings
 		flush_mapping(mapping);
@@ -241,7 +253,8 @@ vector<size_t> StrideExperiment::collect_cache_histogram(Mapping const& mapping,
         //}
 
 		size_t probe_idx = repetition % (cache_histogram.size());
-	    probe_single(cache_histogram, probe_idx, mapping.base_addr + (probe_idx * CACHE_LINE_SIZE));
+	    //probe_single(cache_histogram, probe_idx, mapping.base_addr + (probe_idx * CACHE_LINE_SIZE));
+		probe_single(cache_histogram, probe_idx, mapping.base_addr + probe_idx);
         //printf("rep %ld, probe_idx %ld, cache_histogram[%ld] %ld\n",repetition, probe_idx, probe_idx, cache_histogram[probe_idx]);
 	}
 

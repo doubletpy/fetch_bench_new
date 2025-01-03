@@ -52,7 +52,7 @@ protected:
 			set_intel_prefetcher(cpu, INTEL_DCU_PREFETCHER, false);
 			set_intel_prefetcher(cpu, INTEL_DCU_IP_PREFETCHER, true);
 		} else if (arch == ARCH_AMD) {
-            set_amd_prefetcher(-1, AMD_L1_STRIDE, true);
+            set_amd_prefetcher(-1, AMD_L1_STRIDE, false);
             set_amd_prefetcher(-1, AMD_L1_STREAM, false);
             set_amd_prefetcher(-1, AMD_L1_REGION, false);
             set_amd_prefetcher(-1, AMD_L2_STREAM, false);
@@ -107,11 +107,11 @@ protected:
 	 */
 	Json test_entries(size_t no_repetitions) {
 		L::info("Test: %s\n", __FUNCTION__);		
-        Mapping mapping = allocate_mapping(85 * PAGE_SIZE);
+        Mapping mapping = allocate_mapping(50 * PAGE_SIZE);
 		flush_mapping(mapping);
 
         // base experiment
-        ssize_t stride = 129* CACHE_LINE_SIZE;
+        ssize_t stride = 64* CACHE_LINE_SIZE;
         size_t step = 26;
         L::debug("Testing stride: %zd, steps: %zu\n", stride, step);
         StrideExperiment experiment_0 { stride, step, 0, use_nanosleep, fr_thresh, noise_thresh };
@@ -448,7 +448,7 @@ protected:
 
 	Json test_2D_steps(size_t no_repetitions) {
 		L::info("Test: %s\n", __FUNCTION__);
-		Mapping mapping = allocate_mapping(50 * PAGE_SIZE);
+		Mapping mapping = allocate_mapping(1 * PAGE_SIZE);
 		random_activity(mapping);
 		flush_mapping(mapping);
 
@@ -459,12 +459,13 @@ protected:
 
 		// try a few different strides (positive and negative) and a few
 		// different step sizes to test for prefetching in both directions
-		ssize_t	stride = 2 * CACHE_LINE_SIZE;
-		ssize_t	delta = 3;
-		delta = delta * CACHE_LINE_SIZE;
-		size_t	gap1 = 30;
+		//ssize_t	stride = 2 * CACHE_LINE_SIZE;
+		ssize_t	stride = 2;
+		ssize_t	delta = 126;
+		//delta = delta * CACHE_LINE_SIZE;
+		size_t	gap1 = 32;
 		size_t	gap2 = 1;
-		for (size_t step = 30; step <= 30; step++) {
+		for (size_t step = 10; step <= 10; step++) {
 			L::info("stride: %zd, stride2: %zd, gap1: %zu, gap2: %zu, steps: %zu\n", stride, (stride + delta), gap1, gap2, step);
 			size_t first_access_offset = 0;
 			// run the experiment
@@ -551,9 +552,9 @@ protected:
 		ssize_t	delta = 3;
 		delta = delta * CACHE_LINE_SIZE;
 		//size_t	gap1 = 10;
-		size_t	gap2 = 2;
-		size_t	step = 30;
-		for (size_t gap1 = 3; gap1 <= 3; gap1 = gap1 + 1) {
+		size_t	gap2 = 1;
+		size_t	step = 20;
+		for (size_t gap1 = 10; gap1 <= 10; gap1 = gap1 + 1) {
 			//size_t plus = gap1 - 5;
 			size_t plus = 0;
 			L::info("stride: %zd, stride2: %zd, gap1: %zu, gap2: %zu, steps: %zu, plus: %zu\n", stride, (stride + delta), gap1, gap2, step, plus);
@@ -1226,17 +1227,19 @@ protected:
 	virtual Json identify() override {
 		size_t no_repetitions = 400000 * (PAGE_SIZE / 4096);
 
-		//Json test_results = test_direction(no_repetitions);
 		Json test_results = test_direction(no_repetitions);
+		//Json test_results = test_direction(no_repetitions);
+		/*
 		bool identified = (
 			test_results["positive_direction"].bool_value() == true
 			|| test_results["negative_direction"].bool_value() == true
 		);
+		*/
 		return Json::object {
-			{ "identified", identified },
+			//{ "identified", identified },
 			//{ "test_direction", test_results },
-			//{ "test_steps", test_2D_steps(no_repetitions) },
-			{ "test_gap1", test_2D_gap1(no_repetitions) },
+			{ "test_steps", test_2D_steps(no_repetitions) },
+			//{ "test_gap1", test_2D_gap1(no_repetitions) },
 			//{ "test_steps", test_2D_steps_plus(no_repetitions) },
 		    //{ "test_entries", test_entries(no_repetitions) },
 			//{ "test_overview", test_overview(no_repetitions) },

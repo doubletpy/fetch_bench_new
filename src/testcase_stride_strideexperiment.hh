@@ -188,6 +188,10 @@ __attribute__((always_inline)) inline void workload_2Dstride_loop(StrideExperime
 			//printf("i=%ld, %p\n", i, ptr);
 		}	
 	}
+	//for 2D strdie test
+//	ptr += (gap1 - 1) * experiment.stride;
+//	maccess_noinline(ptr);
+    mfence();
 }
 
 __attribute__((always_inline)) inline void workload_2Dstride_loop_plus(StrideExperiment const& experiment, Mapping const& mapping, 
@@ -251,13 +255,21 @@ __attribute__((always_inline)) inline void workload_3Dstride_loop(StrideExperime
 __attribute__((always_inline)) inline void workload_stride_loop_n_pc(StrideExperiment const& experiment, Mapping const& mapping, void* additional_info) {
 	
     uint8_t* ptr_begin = experiment.get_ptr_begin(mapping);
+	uint8_t* ptr = ptr_begin;
     uint8_t step = experiment.step;
     int64_t stride = experiment.stride;
     for (uint64_t i = 0; i < step; i++) {
-        access_fence_128(ptr_begin + i * stride);
-		access_fence(ptr_begin + i * stride + 128 * 64);
+        //access_fence_128(ptr_begin + i * stride);
+		//access_fence(ptr_begin + i * stride + 128 * 64);
         //access_fence_32(ptr_begin + i * stride + 64 * 64);
         //access_fence_4(ptr_begin + i * stride + 96 * 64);
+		access_fence_64(ptr);
+		if (((int)i%3 == 0) && (i != 0)) {
+			ptr += (stride + (32*64));
+		} else {
+			ptr += stride;
+		}
+		
     }
 }
 
