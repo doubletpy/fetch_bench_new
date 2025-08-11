@@ -464,6 +464,35 @@ src/testcase_sms_smsexperiment.cc.s:
 	$(MAKE) -f CMakeFiles/fetchbench.dir/build.make CMakeFiles/fetchbench.dir/src/testcase_sms_smsexperiment.cc.s
 .PHONY : src/testcase_sms_smsexperiment.cc.s
 
+
+src/testcase_temporal_temporalexperiment.o: src/testcase_temporal_temporalexperiment.cc.o
+
+.PHONY : src/testcase_temporal_temporalexperiment.o
+
+# target to build an object file
+src/testcase_temporal_temporalexperiment.cc.o:
+	$(MAKE) -f CMakeFiles/fetchbench.dir/build.make CMakeFiles/fetchbench.dir/src/testcase_temporal_temporalexperiment.cc.o
+.PHONY : src/testcase_temporal_temporalexperiment.cc.o
+
+src/testcase_temporal_temporalexperiment.i: src/testcase_temporal_temporalexperiment.cc.i
+
+.PHONY : src/testcase_temporal_temporalexperiment.i
+
+# target to preprocess a source file
+src/testcase_temporal_temporalexperiment.cc.i:
+	$(MAKE) -f CMakeFiles/fetchbench.dir/build.make CMakeFiles/fetchbench.dir/src/testcase_temporal_temporalexperiment.cc.i
+.PHONY : src/testcase_temporal_temporalexperiment.cc.i
+
+src/testcase_temporal_temporalexperiment.s: src/testcase_temporal_temporalexperiment.cc.s
+
+.PHONY : src/testcase_temporal_temporalexperiment.s
+
+# target to generate assembly for a file
+src/testcase_temporal_temporalexperiment.cc.s:
+	$(MAKE) -f CMakeFiles/fetchbench.dir/build.make CMakeFiles/fetchbench.dir/src/testcase_temporal_temporalexperiment.cc.s
+.PHONY : src/testcase_temporal_temporalexperiment.cc.s
+
+
 src/testcase_stream_streamexperiment.o: src/testcase_stream_streamexperiment.cc.o
 
 .PHONY : src/testcase_stream_streamexperiment.o

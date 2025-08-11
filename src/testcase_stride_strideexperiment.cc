@@ -34,8 +34,12 @@ bool StrideExperiment::offset_accessed(size_t offset, ssize_t delta, size_t gap1
 			is_multiple_of_stride |= (labs(offset_normalized) % labs(((stride * gap1) + ((stride + delta) * gap2))) == labs((gap1 * stride + (i - gap1) * (stride + delta))));			
 		}
 	}
-	if (offset_normalized > 64) {
-		offset_normalized -= 64;
+
+//	if (offset_normalized > 64) {
+//		offset_normalized -= 64;
+//	}
+	if (offset_normalized > 1) {
+		offset_normalized -= 1;
 	}
 	ssize_t offset_step = offset_normalized / (int)((stride * gap1) + ((stride + delta) * gap2));
 	//printf("offset_normalized %ld, total %ld, offset_step %ld\n", offset_normalized, ((stride * gap1) + ((stride + delta) * gap2)), offset_step);
@@ -71,9 +75,9 @@ bool StrideExperiment::offset_potential_prefetch(size_t offset, ssize_t delta, s
 			is_multiple_of_stride |= (labs(offset_normalized) % labs(((stride * gap1) + ((stride + delta) * gap2))) == labs((gap1 * stride + (i - gap1) * (stride + delta))));			
 		}
 	}
-	if (offset_normalized > 64) {
-		offset_normalized -= 64;
-	}
+//	if (offset_normalized > 64) {
+//		offset_normalized -= 64;
+//	}
 	ssize_t offset_step = offset_normalized / (int)((stride * gap1) + ((stride + delta) * gap2));
 	if (is_multiple_of_stride && offset_step >= 0 && offset_step >= (ssize_t)step) {
 		return true;

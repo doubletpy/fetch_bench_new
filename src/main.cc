@@ -104,6 +104,7 @@ int main(int argc, char** argv) {
 	testcases.push_back(make_unique<TestCaseStride>  (opt_target_cpu, opt_fr_thresh, opt_noise_thresh, use_nanosleep));
 	testcases.push_back(make_unique<TestCaseStream>  (opt_fr_thresh, opt_noise_thresh, use_nanosleep));
 	testcases.push_back(make_unique<TestCaseSMS>     (opt_fr_thresh, opt_noise_thresh, use_nanosleep));
+	testcases.push_back(make_unique<TestCaseTemporal>(opt_fr_thresh, opt_noise_thresh, use_nanosleep));
 	testcases.push_back(make_unique<TestCaseDCReplay>(opt_fr_thresh, opt_noise_thresh, use_nanosleep));
 	testcases.push_back(make_unique<TestCasePointerArray>(opt_target_cpu, opt_ctr_cpu));
 	testcases.push_back(make_unique<TestCasePointerChase>(opt_target_cpu, opt_ctr_cpu));

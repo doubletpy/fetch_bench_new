@@ -52,7 +52,7 @@ protected:
 			set_intel_prefetcher(cpu, INTEL_DCU_PREFETCHER, false);
 			set_intel_prefetcher(cpu, INTEL_DCU_IP_PREFETCHER, true);
 		} else if (arch == ARCH_AMD) {
-            set_amd_prefetcher(-1, AMD_L1_STRIDE, false);
+            set_amd_prefetcher(-1, AMD_L1_STRIDE, true);
             set_amd_prefetcher(-1, AMD_L1_STREAM, false);
             set_amd_prefetcher(-1, AMD_L1_REGION, false);
             set_amd_prefetcher(-1, AMD_L2_STREAM, false);
@@ -460,12 +460,12 @@ protected:
 		// try a few different strides (positive and negative) and a few
 		// different step sizes to test for prefetching in both directions
 		//ssize_t	stride = 2 * CACHE_LINE_SIZE;
-		ssize_t	stride = 2;
+		ssize_t	stride = 4;
 		ssize_t	delta = 126;
 		//delta = delta * CACHE_LINE_SIZE;
-		size_t	gap1 = 32;
-		size_t	gap2 = 1;
-		for (size_t step = 10; step <= 10; step++) {
+		size_t	gap1 = 128;
+		size_t	gap2 = 0;
+		for (size_t step = 1; step <= 1; step++) {
 			L::info("stride: %zd, stride2: %zd, gap1: %zu, gap2: %zu, steps: %zu\n", stride, (stride + delta), gap1, gap2, step);
 			size_t first_access_offset = 0;
 			// run the experiment
@@ -1227,7 +1227,7 @@ protected:
 	virtual Json identify() override {
 		size_t no_repetitions = 400000 * (PAGE_SIZE / 4096);
 
-		Json test_results = test_direction(no_repetitions);
+		//Json test_results = test_direction(no_repetitions);
 		//Json test_results = test_direction(no_repetitions);
 		/*
 		bool identified = (

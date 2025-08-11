@@ -1,3 +1,29 @@
+# For yumo
+1. install tools
+```
+$ sudo apt install build-essential cmake cpufrequtils python3-matplotlib
+```
+2. 编译
+```
+$ CXXFLAGS="-DARM_MSR" CFLAGS="$CXXFLAGS" ASMFLAGS="$CXXFLAGS" cmake -B build
+$ make -C build -j$(nproc)
+```
+3. 关闭smt
+```
+$ echo off | sudo tee /sys/devices/system/cpu/smt/control
+```
+4. 指定core，设置频率模式为performance
+```
+$ sudo cpupower -c [cpu_num] frequency-set -g performance
+```
+5. run test
+```
+$ sudo build/fetchbench -c [cpu_num] -t temporal -i 1| tee temporal.log
+```
+6. 测试完成后重新打开smt，恢复频率模式
+
+
+
 # Using FetchBench
 
 ## Supported Platforms, Minimum Requirements
@@ -120,8 +146,11 @@ The following command line arguments can optionally be specified to override spe
 - `-s`: Whether to sleep a microsecond before probing the cache (`1`) or not (`0`). This sometimes improves the signal strength, especially on ARM. If not specified, we try to automatically determine what works better by running a basic stride prefetcher experiment in both configurations and comparing the results.
 
 #### Running Testcases Selectively
-- `-t`: Select a specific testcase to run (either `adjacent`, `stride`, `stream`, `sms`, `dcreplay`, `parr`, or `pchase`). If not specified, we run all of them.
+- `-t`: Select a specific testcase to run (either `adjacent`, `stride`, `stream`, `sms`, `dcreplay`, `parr`, `tempraal` or `pchase`). If not specified, we run all of them.
 - `-i`: Whether to run only identification tests (`1`) or run identification tests for all prefetchers and characterization tests for those with positive identification results (`0`). Defaults to `0`.
+
+### Example
+$ sudo build/fetchbench -t temporal -c 3 -i 1 | tee out.log
 
 ## Outputs
 The code generates a lot of traces (`trace-*.json`), some figures based on these traces (`*.svg`), and result summaries (`results-*.json`). The result summaries are also printed to stdout.
@@ -137,3 +166,4 @@ make -C build doc_doxygen
 ```
 
 The documentation is generated in `build/docs`.
+
